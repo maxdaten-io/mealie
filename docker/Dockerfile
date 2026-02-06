@@ -111,7 +111,7 @@ RUN . $VENV_PATH/bin/activate \
 # Production Image
 ###############################################
 FROM python-base AS production
-LABEL org.opencontainers.image.source="https://github.com/mealie-recipes/mealie"
+LABEL org.opencontainers.image.source="https://github.com/maxdaten-io/mealie"
 ENV PRODUCTION=true
 ENV TESTING=false
 
