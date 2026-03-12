@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Данные действий рецепта",
       "new-recipe-action": "Новое действие с рецептом",
       "edit-recipe-action": "Редактировать действие рецепта",
-      "action-type": "Тип Действия"
+      "action-type": "Тип Действия",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Создать псевдоним",
     "manage-aliases": "Управление псевдонимами",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "больше чем",
       "is-greater-than-or-equal-to": "больше или равно",
       "is-less-than": "меньше чем",
-      "is-less-than-or-equal-to": "меньше или равно"
+      "is-less-than-or-equal-to": "меньше или равно",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "соответствует",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "содержит все",
       "is-like": "содержит",
       "is-not-like": "не содержит"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "Без пробелов",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

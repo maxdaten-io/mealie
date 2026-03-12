@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Recepšu darbību dati",
       "new-recipe-action": "Jaunas receptes darbība",
       "edit-recipe-action": "Rediģēt receptes darbību",
-      "action-type": "Darbības veids"
+      "action-type": "Darbības veids",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Izveidot aizstājvārdu",
     "manage-aliases": "Pārvaldīt aizstājvārdus",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "ir lielāks par",
       "is-greater-than-or-equal-to": "ir lielāks vai vienāds ar",
       "is-less-than": "ir mazāks par",
-      "is-less-than-or-equal-to": "ir mazāks vai vienāds ar"
+      "is-less-than-or-equal-to": "ir mazāks vai vienāds ar",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "IR",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "satur visus",
       "is-like": "ir kā",
       "is-not-like": "nav tāds, kā"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "No Whitespace Allowed",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

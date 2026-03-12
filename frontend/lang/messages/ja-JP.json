@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "レシピ操作データ",
       "new-recipe-action": "新しいレシピ操作",
       "edit-recipe-action": "レシピ操作の編集",
-      "action-type": "操作タイプ"
+      "action-type": "操作タイプ",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "エイリアスを作成",
     "manage-aliases": "エイリアスの管理",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "より大きい",
       "is-greater-than-or-equal-to": "以上",
       "is-less-than": "より小さい",
-      "is-less-than-or-equal-to": "以下"
+      "is-less-than-or-equal-to": "以下",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "は",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "すべてを含む",
       "is-like": "次のようなものです",
       "is-not-like": "というわけではありません"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "No Whitespace Allowed",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

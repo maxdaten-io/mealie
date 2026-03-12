@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "מידע על הפעולות במתכון",
       "new-recipe-action": "פעולת-מתכון חדשה",
       "edit-recipe-action": "עריכת פעולת-מתכון",
-      "action-type": "סוג פעולה"
+      "action-type": "סוג פעולה",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "יצירת שם נרדף",
     "manage-aliases": "נהל שמות נרדפים",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "גדול מ-",
       "is-greater-than-or-equal-to": "גדול או שווה ל-",
       "is-less-than": "קטן מ-",
-      "is-less-than-or-equal-to": "קטן או שווה ל-"
+      "is-less-than-or-equal-to": "קטן או שווה ל-",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "זהה ל-",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "מכיל הכל מתוך",
       "is-like": "דומה ל-",
       "is-not-like": "לא דומה לא-"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "No Whitespace Allowed",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

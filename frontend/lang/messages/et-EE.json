@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Retsepti kasutusteave",
       "new-recipe-action": "Uus retsepti tegevus",
       "edit-recipe-action": "Muuda retsepti tegevust",
-      "action-type": "Tegevuse tüüp"
+      "action-type": "Tegevuse tüüp",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Loo alias",
     "manage-aliases": "Halda aliaseid",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "on suurem kui",
       "is-greater-than-or-equal-to": "on suurem või võrdne kui",
       "is-less-than": "on vähem kui",
-      "is-less-than-or-equal-to": "on väiksem või võrdne kui"
+      "is-less-than-or-equal-to": "on väiksem või võrdne kui",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "on",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "sisaldab kõiki",
       "is-like": "on nagu",
       "is-not-like": "ei ole nagu"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "No Whitespace Allowed",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

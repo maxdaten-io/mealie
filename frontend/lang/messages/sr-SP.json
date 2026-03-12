@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Recipe Actions Data",
       "new-recipe-action": "New Recipe Action",
       "edit-recipe-action": "Edit Recipe Action",
-      "action-type": "Action Type"
+      "action-type": "Action Type",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Create Alias",
     "manage-aliases": "Manage Aliases",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "је веће од",
       "is-greater-than-or-equal-to": "је веће или једнако са",
       "is-less-than": "је мање од",
-      "is-less-than-or-equal-to": "је мање или једнако са"
+      "is-less-than-or-equal-to": "је мање или једнако са",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "је",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "садржи све из",
       "is-like": "је као",
       "is-not-like": "није као"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Мора бити валидан URL",
     "no-whitespace": "Размак није дозвољен",
     "min-length": "Мора бити најмање {min} карактера",
-    "max-length": "Мора бити највише {max} карактера"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

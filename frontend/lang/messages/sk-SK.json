@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Dáta akcií receptu",
       "new-recipe-action": "Nová akcia receptu",
       "edit-recipe-action": "Upraviť akciu receptu",
-      "action-type": "Typ akcie"
+      "action-type": "Typ akcie",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Vytvoriť alias",
     "manage-aliases": "Spravovať aliasy",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "je väčšie ako",
       "is-greater-than-or-equal-to": "je väčšie alebo rovné",
       "is-less-than": "je menšie ako",
-      "is-less-than-or-equal-to": "je menšie alebo rovné"
+      "is-less-than-or-equal-to": "je menšie alebo rovné",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "je",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "obsahuje všetky",
       "is-like": "je ako",
       "is-not-like": "nie je ako"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Musí byť platná URL",
     "no-whitespace": "Prázdne znaky nepovolené",
     "min-length": "Musí mať aspoň {min} znakov",
-    "max-length": "Musí mať najviac {max} znakov"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Datos das Acións da Receita",
       "new-recipe-action": "Nova Ación da Receita",
       "edit-recipe-action": "Editar Ación da Receita",
-      "action-type": "Tipo de Ación"
+      "action-type": "Tipo de Ación",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Crear Pseudónimo",
     "manage-aliases": "Xestionar Pseudónimos",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "é maior que",
       "is-greater-than-or-equal-to": "é maior ou igual a",
       "is-less-than": "é menor que",
-      "is-less-than-or-equal-to": "é menor ou igual a"
+      "is-less-than-or-equal-to": "é menor ou igual a",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "é",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "contén todos os",
       "is-like": "é como",
       "is-not-like": "non é como"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Must Be A Valid URL",
     "no-whitespace": "No Whitespace Allowed",
     "min-length": "Must Be At Least {min} Characters",
-    "max-length": "Must Be At Most {max} Characters"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

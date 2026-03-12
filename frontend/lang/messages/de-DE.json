@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Rezept-Aktionen Daten",
       "new-recipe-action": "Neue Rezept-Aktion",
       "edit-recipe-action": "Rezept-Aktion bearbeiten",
-      "action-type": "Aktionstyp"
+      "action-type": "Aktionstyp",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Alias erstellen",
     "manage-aliases": "Aliasse verwalten",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "ist größer als",
       "is-greater-than-or-equal-to": "ist größer gleich",
       "is-less-than": "ist weniger als",
-      "is-less-than-or-equal-to": "ist kleiner gleich"
+      "is-less-than-or-equal-to": "ist kleiner gleich",
+      "is-older-than": "Ist älter als",
+      "is-newer-than": "Ist neuer als"
     },
     "relational-keywords": {
       "is": "ist",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "enthält alle",
       "is-like": "ist wie",
       "is-not-like": "ist nicht wie"
+    },
+    "dates": {
+      "days-ago": "vor Tagen|vor Tag|vor Tagen"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Muss eine gültige URL sein",
     "no-whitespace": "Kein Leerzeichen erlaubt",
     "min-length": "Muss mindestens {min} Zeichen haben",
-    "max-length": "Darf mindestens {max} Zeichen haben"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

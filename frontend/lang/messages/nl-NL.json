@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Gegevens voor acties met recepten",
       "new-recipe-action": "Nieuwe actie met recept",
       "edit-recipe-action": "Pas actie met recept aan",
-      "action-type": "Soort actie"
+      "action-type": "Soort actie",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Maak alias",
     "manage-aliases": "Beheer aliassen ",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "is groter dan",
       "is-greater-than-or-equal-to": "is groter dan of gelijk aan",
       "is-less-than": "is kleiner dan",
-      "is-less-than-or-equal-to": "is kleiner dan of gelijk aan"
+      "is-less-than-or-equal-to": "is kleiner dan of gelijk aan",
+      "is-older-than": "is ouder dan",
+      "is-newer-than": "is nieuwer dan"
     },
     "relational-keywords": {
       "is": "is",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "bevat alles van",
       "is-like": "is zoals",
       "is-not-like": "is niet zoals"
+    },
+    "dates": {
+      "days-ago": "dagen geleden|dag geleden|dagen geleden"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Moet een geldige URL zijn",
     "no-whitespace": "Geen spaties toegestaan",
     "min-length": "Moet minimaal {min} tekens bevatten",
-    "max-length": "Zorg dat je {max} tekens gebruikt"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }

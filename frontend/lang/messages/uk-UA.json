@@ -1168,7 +1168,11 @@
       "recipe-actions-data": "Дані дій рецепта",
       "new-recipe-action": "Нова дія рецепту",
       "edit-recipe-action": "Редагувати дії рецепта",
-      "action-type": "Тип Дії"
+      "action-type": "Тип Дії",
+      "action-types": {
+        "link": "Link",
+        "post": "Post"
+      }
     },
     "create-alias": "Створити псевдонім",
     "manage-aliases": "Керувати псевдонімами",
@@ -1422,7 +1426,9 @@
       "is-greater-than": "більше ніж",
       "is-greater-than-or-equal-to": "більше або дорівнює",
       "is-less-than": "менше ніж",
-      "is-less-than-or-equal-to": "менше або дорівнює"
+      "is-less-than-or-equal-to": "менше або дорівнює",
+      "is-older-than": "is older than",
+      "is-newer-than": "is newer than"
     },
     "relational-keywords": {
       "is": "є",
@@ -1432,6 +1438,9 @@
       "contains-all-of": "містить усі",
       "is-like": "схожий",
       "is-not-like": "не схожий"
+    },
+    "dates": {
+      "days-ago": "days ago|day ago|days ago"
     }
   },
   "validators": {
@@ -1440,6 +1449,6 @@
     "invalid-url": "Має бути дійсною URL-адресою",
     "no-whitespace": "Пробіли заборонені",
     "min-length": "Повинно бути не менше ніж {min} символів ",
-    "max-length": "Повинно бути не більше ніж {max} символів"
+    "max-length": "Must Be At Most {max} Character|Must Be At Most {max} Characters"
   }
 }
