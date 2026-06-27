@@ -18,8 +18,18 @@
             "yield": "Výnos",
             "yields": "Výnosy"
         },
-        "and-amount": "and {amount}",
-        "or-ingredient": "or {ingredient}"
+        "and-amount": "a {amount}",
+        "or-ingredient": "nebo {ingredient}",
+        "create-progress": {
+            "creating-recipe-with-ai": "Vytváření receptu pomocí AI...",
+            "creating-recipe-from-transcript-with-ai": "Vytváření receptu pomocí AI přepisu...",
+            "creating-recipe-from-webpage-data": "Vytváření receptu z webových stránek...",
+            "downloading-image": "Stahování obrázku...",
+            "downloading-video": "Stahování videa...",
+            "extracting-recipe-data": "Extrahování dat receptu...",
+            "fetching-webpage": "Načítání webové stránky...",
+            "transcribing-audio-with-ai": "Přepisování zvuku pomocí AI..."
+        }
     },
     "mealplan": {
         "no-recipes-match-your-rules": "Žádné recepty neodpovídají vašim pravidlům"

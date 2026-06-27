@@ -19,7 +19,17 @@
             "yields": "Skilar"
         },
         "and-amount": "og {amount}",
-        "or-ingredient": "eða {ingredient}"
+        "or-ingredient": "eða {ingredient}",
+        "create-progress": {
+            "creating-recipe-with-ai": "Bý til uppskrift með gervigreind...",
+            "creating-recipe-from-transcript-with-ai": "Bý til uppskrift útfrá umritun með gervigreind...",
+            "creating-recipe-from-webpage-data": "Bý til uppskrift út frá gögnum á vefsíðu...",
+            "downloading-image": "Hleð niður mynd...",
+            "downloading-video": "Hleð niður video...",
+            "extracting-recipe-data": "Hleð inn uppskriftar gögnum...",
+            "fetching-webpage": "Sæki vefsíðu...",
+            "transcribing-audio-with-ai": "Umrita hljóð með gervigreind..."
+        }
     },
     "mealplan": {
         "no-recipes-match-your-rules": "Eingin uppskrift passar við settar reglur"

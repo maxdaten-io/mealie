@@ -18,8 +18,18 @@
             "yield": "Количество порций",
             "yields": "Можно получить порций"
         },
-        "and-amount": "and {amount}",
-        "or-ingredient": "or {ingredient}"
+        "and-amount": "И {amount}",
+        "or-ingredient": "Или {ingredient}",
+        "create-progress": {
+            "creating-recipe-with-ai": "Создание рецепта с ИИ...",
+            "creating-recipe-from-transcript-with-ai": "Создание рецепта из транскрипции с ИИ...",
+            "creating-recipe-from-webpage-data": "Создание рецепта из данных веб-страницы...",
+            "downloading-image": "Загрузка изображения...",
+            "downloading-video": "Загрузка видео...",
+            "extracting-recipe-data": "Извлечение данных рецепта...",
+            "fetching-webpage": "Загрузка веб-страницы...",
+            "transcribing-audio-with-ai": "Преобразование звука с AI..."
+        }
     },
     "mealplan": {
         "no-recipes-match-your-rules": "Нет рецептов, соответствующих вашим правилам"

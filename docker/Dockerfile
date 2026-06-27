@@ -1,7 +1,7 @@
 ###############################################
 # Frontend Build
 ###############################################
-FROM node:24@sha256:3a09aa6354567619221ef6c45a5051b671f953f0a1924d1f819ffb236e520e6b \
+FROM node:24@sha256:fdddfb3e688158251943d52eba361de991548f6814007acba4917ae6b512d6be \
     AS frontend-builder
 
 WORKDIR /frontend
@@ -21,7 +21,7 @@ RUN yarn generate
 ###############################################
 # Base Image - Python
 ###############################################
-FROM python:3.12-slim@sha256:2267adc248a477c1f1a852a07a5a224d42abe54c28aafa572efa157dfb001bba \
+FROM python:3.12-slim@sha256:7026274c107626d7e940e0e5d6730481a4600ae95d5ca7eb532dd4180313fea9 \
     AS python-base
 
 ENV MEALIE_HOME="/app"
@@ -51,6 +51,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install uv
+
+# Install from the committed lockfile; never re-resolve. The rolling
+# `exclude-newer` cooling window (pyproject [tool.uv]) would otherwise make
+# `uv export` below re-resolve and fail on in-window pins.
+ENV UV_FROZEN=1
 
 WORKDIR /mealie
 
@@ -91,6 +96,7 @@ RUN apt-get update \
     build-essential \
     libpq-dev \
     libwebp-dev \
+    ffmpeg \
     # LDAP Dependencies
     libsasl2-dev libldap2-dev libssl-dev \
     gnupg gnupg2 gnupg1 \
@@ -120,6 +126,7 @@ ENV GIT_COMMIT_HASH=$COMMIT
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     curl \
+    ffmpeg \
     gosu \
     iproute2 \
     libldap-common \

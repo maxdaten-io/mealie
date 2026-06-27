@@ -4,6 +4,9 @@ CWD = Path(__file__).parent
 
 locale_dir = CWD / "locale"
 
+backup_version_1d9a002d7234_1 = CWD / "backups/backup-version-1d9a002d7234-1.zip"
+"""1d9a002d7234: add referenced_recipe to ingredients"""
+
 backup_version_44e8d670719d_1 = CWD / "backups/backup-version-44e8d670719d-1.zip"
 """44e8d670719d: add extras to shopping lists, list items, and ingredient foods"""
 
@@ -41,6 +44,8 @@ migrations_nextcloud = CWD / "migrations/nextcloud.zip"
 migrations_tandoor = CWD / "migrations/tandoor.zip"
 
 migrations_plantoeat = CWD / "migrations/plantoeat.zip"
+
+migrations_plantoeat_csv = CWD / "migrations/plantoeat.csv"
 
 migrations_myrecipebox = CWD / "migrations/myrecipebox.csv"
 

@@ -1,6 +1,4 @@
-import filecmp
 import statistics
-from pathlib import Path
 from typing import Any
 
 from sqlalchemy.orm import Session
@@ -15,8 +13,8 @@ from mealie.db.models.household.household import Household
 from mealie.db.models.household.household_to_recipe import HouseholdToRecipe
 from mealie.db.models.household.mealplan import GroupMealPlanRules
 from mealie.db.models.household.shopping_list import ShoppingList
-from mealie.db.models.labels import MultiPurposeLabel
 from mealie.db.models.recipe.ingredient import IngredientFoodModel, IngredientUnitModel
+from mealie.db.models.recipe.labels import MultiPurposeLabel
 from mealie.db.models.recipe.recipe import RecipeModel
 from mealie.db.models.recipe.tool import Tool
 from mealie.db.models.users.user_to_recipe import UserToRecipe
@@ -30,17 +28,6 @@ def dict_sorter(d: dict) -> Any:
     possible_keys = {"created_at", "id"}
 
     return next((d[key] for key in possible_keys if d.get(key)), 1)
-
-
-# For Future Use
-def match_file_tree(path_a: Path, path_b: Path):
-    if path_a.is_dir() and path_b.is_dir():
-        for a_file in path_a.iterdir():
-            b_file = path_b.joinpath(a_file.name)
-            assert b_file.exists()
-            match_file_tree(a_file, b_file)
-    else:
-        assert filecmp.cmp(path_a, path_b)
 
 
 def test_database_backup():
@@ -217,6 +204,22 @@ def _b9e516e2d3b3_add_household_to_recipe_last_made_household_to_foods_and_tools
                 assert not tool.households_with_tool
 
 
+def _a39c7f1826e3_add_unit_standardization_fields(session: Session):
+    groups = session.query(Group).all()
+
+    for group in groups:
+        # test_data.backup_version_1d9a002d7234_1 has a non-anonymized "pint" unit
+        # and has not yet run the standardization migration.
+        pint_units = (
+            session.query(IngredientUnitModel)
+            .filter(IngredientUnitModel.group_id == group.id, IngredientUnitModel.name == "pint")
+            .all()
+        )
+        for unit in pint_units:
+            assert unit.standard_quantity == 2
+            assert unit.standard_unit == "cup"
+
+
 def test_database_restore_data():
     """
     This tests real user backups to make sure the data is restored correctly. The data has been anonymized, but
@@ -227,6 +230,7 @@ def test_database_restore_data():
     """
 
     backup_paths = [
+        test_data.backup_version_1d9a002d7234_1,
         test_data.backup_version_44e8d670719d_1,
         test_data.backup_version_44e8d670719d_2,
         test_data.backup_version_44e8d670719d_3,
@@ -245,6 +249,7 @@ def test_database_restore_data():
         _d7c6efd2de42_migrate_favorites_and_ratings_to_user_ratings,
         _86054b40fd06_added_query_filter_string_to_cookbook_and_mealplan,
         _b9e516e2d3b3_add_household_to_recipe_last_made_household_to_foods_and_tools,
+        _a39c7f1826e3_add_unit_standardization_fields,
     ]
 
     settings = get_app_settings()
