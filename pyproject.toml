@@ -46,6 +46,7 @@ dependencies = [
     "ingredient-parser-nlp==2.7.0",
     "pint==0.25.3",
     "httpx-curl-cffi==0.1.5",
+    "google-genai==2.18.1",
 ]
 
 [project.scripts]

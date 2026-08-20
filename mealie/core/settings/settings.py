@@ -441,6 +441,18 @@ class AppSettings(AppLoggingSettings):
     """
 
     # ===============================================
+    # Gemini Configuration (maxdaten fork extension)
+
+    GEMINI_ENABLED: bool = False
+    GEMINI_API_KEY: str | None = None
+    GEMINI_MODEL: str = "gemini-3.5-flash"
+
+    @property
+    def GEMINI_READY(self) -> bool:
+        """Validates Gemini settings are all set"""
+        return self.GEMINI_ENABLED and bool(self.GEMINI_API_KEY)
+
+    # ===============================================
     # Scraper Configuration
 
     SCRAPER_PROXY_URL: str | None = None
