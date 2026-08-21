@@ -1,5 +1,23 @@
 from google import genai
 from google.genai import types
+from pydantic import BaseModel
+
+
+class DescriptionAssessment(BaseModel):
+    has_ingredients: bool
+    has_instructions: bool
+
+
+ASSESS_DESCRIPTION_PROMPT = """\
+Below is the description of a cooking video. Judge whether it alone is enough to cook from:
+- has_ingredients: it lists the recipe's ingredients, with quantities
+- has_instructions: it contains preparation steps complete enough to follow
+
+References to the video ("full recipe in the video"), links, or a bare dish name do not count.
+
+Description:
+
+"""
 
 TRANSCRIBE_VIDEO_PROMPT = """\
 Watch this cooking video and produce a faithful written record of it in Markdown:
@@ -42,3 +60,17 @@ class GeminiService:
             config=types.GenerateContentConfig(media_resolution="MEDIA_RESOLUTION_LOW"),
         )
         return response.text or None
+
+    async def assess_description(self, description: str) -> DescriptionAssessment | None:
+        """Cheap text-only call judging whether a video description already contains a
+        complete recipe, so the caller can skip the far more expensive video ingestion."""
+
+        response = await self.client.aio.models.generate_content(
+            model=self.model,
+            contents=ASSESS_DESCRIPTION_PROMPT + description,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=DescriptionAssessment,
+            ),
+        )
+        return response.parsed

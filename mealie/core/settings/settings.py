@@ -447,6 +447,9 @@ class AppSettings(AppLoggingSettings):
     GEMINI_API_KEY: str | None = None
     GEMINI_MODEL: str = "gemini-3.5-flash"
 
+    YOUTUBE_API_KEY: str | None = None
+    """Enables the description-first tier of the YouTube import; unset = always watch the video"""
+
     @property
     def GEMINI_READY(self) -> bool:
         """Validates Gemini settings are all set"""

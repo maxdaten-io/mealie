@@ -1,3 +1,3 @@
-from .gemini_service import GeminiService
+from .gemini_service import DescriptionAssessment, GeminiService
 
-__all__ = ["GeminiService"]
+__all__ = ["DescriptionAssessment", "GeminiService"]
