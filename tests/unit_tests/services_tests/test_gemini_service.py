@@ -3,7 +3,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 
 from mealie.core.config import get_app_settings
-from mealie.services.gemini import GeminiService
+from mealie.services.gemini import DescriptionAssessment, GeminiService
 
 
 @pytest.fixture(autouse=True)
@@ -62,3 +62,33 @@ async def test_transcribe_youtube_video_returns_none_on_empty_response(mock_clie
 
     service = GeminiService(api_key="test-key", model="test-model")
     assert await service.transcribe_youtube_video("https://youtu.be/abc123DEF45") is None
+
+
+@pytest.mark.asyncio
+@patch("mealie.services.gemini.gemini_service.genai.Client")
+async def test_assess_description_uses_structured_output(mock_client_cls):
+    response = MagicMock()
+    response.parsed = DescriptionAssessment(has_ingredients=True, has_instructions=False)
+    generate = AsyncMock(return_value=response)
+    mock_client_cls.return_value.aio.models.generate_content = generate
+
+    service = GeminiService(api_key="test-key", model="test-model")
+    result = await service.assess_description("just some ingredients")
+
+    assert result is not None
+    assert result.has_ingredients is True
+    assert result.has_instructions is False
+    kwargs = generate.call_args.kwargs
+    assert kwargs["config"].response_schema is DescriptionAssessment
+    assert "just some ingredients" in str(kwargs["contents"])
+
+
+@pytest.mark.asyncio
+@patch("mealie.services.gemini.gemini_service.genai.Client")
+async def test_assess_description_returns_none_when_unparsed(mock_client_cls):
+    response = MagicMock()
+    response.parsed = None
+    mock_client_cls.return_value.aio.models.generate_content = AsyncMock(return_value=response)
+
+    service = GeminiService(api_key="test-key", model="test-model")
+    assert await service.assess_description("whatever") is None
