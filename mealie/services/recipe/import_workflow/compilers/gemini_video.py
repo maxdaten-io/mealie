@@ -34,8 +34,11 @@ async def fetch_video_description(video_id: str, api_key: str) -> VideoMetadata 
 
     try:
         async with httpx.AsyncClient(timeout=10) as client:
+            # key travels as a header - a query param would end up in access logs
             response = await client.get(
-                YOUTUBE_VIDEOS_API, params={"part": "snippet", "id": video_id, "key": api_key}
+                YOUTUBE_VIDEOS_API,
+                params={"part": "snippet", "id": video_id},
+                headers={"X-goog-api-key": api_key},
             )
             response.raise_for_status()
             items = response.json().get("items") or []
