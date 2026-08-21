@@ -249,11 +249,16 @@ async def test_fetch_video_description_returns_metadata(mock_client_cls):
     response = MagicMock()
     response.raise_for_status = MagicMock()
     response.json.return_value = {"items": [{"snippet": {"title": "Pasta", "description": "flour and water"}}]}
-    mock_client_cls.return_value = make_httpx_client(response=response)
+    client = make_httpx_client(response=response)
+    mock_client_cls.return_value = client
 
     meta = await fetch_video_description("abc123DEF45", "yt-key")
 
     assert meta == VideoMetadata(title="Pasta", description="flour and water")
+    kwargs = client.get.call_args.kwargs
+    # the key must travel as a header, not in the URL - query params end up in access logs
+    assert kwargs["headers"] == {"X-goog-api-key": "yt-key"}
+    assert "key" not in kwargs["params"]
 
 
 @pytest.mark.asyncio
