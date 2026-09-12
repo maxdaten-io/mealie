@@ -155,9 +155,11 @@ class RecipeController(BaseRecipeController):
 
                 return "AI was unable to extract a recipe from this URL"
 
-            # Debugger should produce the same result as the scraper sees before cleaning
+            # Debugger should produce the same result as the scraper sees before cleaning.
+            # Site-specific scrapers parse the page themselves and leave the schema.org data empty,
+            # so fall back to the fields they extracted instead of showing an empty object.
             if scraped_data := await RecipeScraperPackage(data.url, self.translator, self.repos).scrape_url():
-                return scraped_data.schema.data
+                return scraped_data.schema.data or scraped_data.to_json()
         except ForceTimeoutException as e:
             raise HTTPException(
                 status_code=408, detail=ErrorResponse.respond(message="Recipe Scraping Timed Out")
