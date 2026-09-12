@@ -28,7 +28,7 @@ from mealie.services.recipe.import_workflow import (
 )
 from mealie.services.scraper.scraped_extras import ScrapedExtras
 
-from . import cleaner
+from . import cleaner, nextjs_flight
 
 # Re-exported for backwards compatibility with existing importers (e.g. recipe route error handling).
 # safe_scrape_html lives in `fetch` so the import workflow can fetch pages without importing this module.
@@ -209,15 +209,30 @@ class RecipeScraperPackage(ABCScraperStrategy):
         return recipe, extras
 
     async def scrape_url(self) -> SchemaScraperFactory.SchemaScraper | Any | None:
-        from recipe_scrapers import NoSchemaFoundInWildMode, scrape_html
-
         recipe_html = await self.get_html(self.url)
 
-        try:
-            # scrape_html requires a URL, but we might not have one, so we default to a dummy URL
-            scraped_schema = scrape_html(recipe_html, org_url=self.url or "https://example.com", supported_only=False)
-        except (NoSchemaFoundInWildMode, AttributeError):
+        scraped_schema = self.scrape_schema(recipe_html)
+        if scraped_schema is None and (ld_json := nextjs_flight.extract_recipe_ld_json(recipe_html)):
+            # Next.js pages may only render their JSON-LD on the client; recover it from the flight data.
+            # Scrape in wild mode so a site-specific scraper that already failed on this page can't shadow it.
+            self.logger.debug(f"Recovered schema.org Recipe from Next.js flight data for {self.url}")
+            scraped_schema = self.scrape_schema(nextjs_flight.inject_ld_json(recipe_html, ld_json), site_specific=False)
+
+        if scraped_schema is None:
             self.logger.error(f"Recipe Scraper was unable to extract a recipe from {self.url}")
+        return scraped_schema
+
+    def scrape_schema(
+        self, recipe_html: str, site_specific: bool = True
+    ) -> SchemaScraperFactory.SchemaScraper | Any | None:
+        from recipe_scrapers import NoSchemaFoundInWildMode, scrape_html
+
+        # scrape_html requires a URL, but we might not have one, so we default to a dummy URL
+        org_url = (self.url if site_specific else None) or "https://example.com"
+        try:
+            scraped_schema = scrape_html(recipe_html, org_url=org_url, supported_only=False)
+        except (NoSchemaFoundInWildMode, AttributeError):
+            self.logger.debug(f"Recipe Scraper [Package] found no schema in the html of {self.url}")
             return None
 
         except ConnectionError as e:
@@ -237,7 +252,7 @@ class RecipeScraperPackage(ABCScraperStrategy):
         if instruct or ingredients:
             return scraped_schema
 
-        self.logger.debug(f"Recipe Scraper [Package] was unable to extract a recipe from {self.url}")
+        self.logger.debug(f"Recipe Scraper [Package] found no ingredients or instructions for {self.url}")
         return None
 
     async def parse(self, on_progress: Callable[[str], Awaitable[None]] | None = None):
