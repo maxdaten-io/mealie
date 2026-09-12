@@ -65,6 +65,8 @@ html_sous_vide_shrimp = CWD / "html/sous-vide-shrimp.html"
 
 html_jam_roly_poly_with_custard = CWD / "html/jam-roly-poly-with-custard.html"
 
+html_reisnudeln_mit_glasierten_hackballchen = CWD / "html/reisnudeln-mit-glasierten-hackballchen.html"
+
 html_nutty_umami_noodles_with_scallion_brown_butter_and_snow_peas_recipe = (
     CWD / "html/nutty-umami-noodles-with-scallion-brown-butter-and-snow-peas-recipe.html"
 )
